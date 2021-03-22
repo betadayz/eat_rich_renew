@@ -16,7 +16,15 @@ mongoose.connect(process.env.DATABASE, {
     useCreateIndex: true
 }).then(() => console.log('DB Connected'));
 
+
 const app = express();
+
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(expressValidator());
+app.use(cors());
+
 
 app.use("/eatrich",userRoutes);
 

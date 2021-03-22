@@ -3,7 +3,13 @@ const crypto = require("crypto")
 const { v1: uuidv1 } = require('uuid');
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    lastName: {
         type: String,
         trim: true,
         required: true,
@@ -15,17 +21,90 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: 50
     },
+    dateOfReg: {
+        type: Date,
+        required: true
+    },
+    dateOfBirth: {
+        type: Date,
+        required: true
+    },
     phoneNumber: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    address: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    state: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    bank: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    accNumber: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+    nextOfKindName: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    nextOfKindEmail: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    nextOfKindPhone: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    nextOfKindRelationship: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    sponsor: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    refWallet: {
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 50
+    },
+    refCode: {
         type: String,
         required: true
     },
     hashed_password: {
         type: String,
         required: true,
-    },
-    refCode: {
-        Type: String,
-        required: true
     },
     about: {
         type: String,
@@ -39,6 +118,14 @@ const userSchema = new mongoose.Schema({
     history: {
         type: Array,
         default: []
+    },
+    investments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Investment'
+    }],
+    profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Investment'
     }
 
 },
