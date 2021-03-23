@@ -1,47 +1,13 @@
-const User = require("../models/user");
-const jwt = require("jsonwebtoken")
-const expressJwt = require("express-jwt");
-const { errorHandler } = require('../helpers/dbErrorHandler')
+const User = require('../models/user')
 
-exports.signup = (req, res) => {
-    const user = new User(req.body);
-    user.save((err, user) => {
-        if (err) {
-            return res.status(400).json({
-                err: errorHandler(err)
-            });
-        }
-        user.salt = undefined
-        user.hashed_password = undefined
-        res.json({
-            user
-        });
-    });
-};
-
-exports.signin = (req, res) => {
-    const { email, password } = req.body;
-    User.findOne({ email}, (err, user) => {
+exports.userById = (req, res, next, id) => {
+    User.findById(id).exec((err, user) => {
         if(err || !user) {
             return res.status(400).json({
-                err: "User with that email does not exists. Please signup"
-            });
-        }
-
-        if (!user.authenticate(password)) {
-            return res.status(401).json({
-                error: "Email and password dont not match"
+                error: "User not found"
             })
         }
-        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET)
-        res.cookie("t", token, {expire: new Date() + 9999})
-        const {_id, Lastname, firstName, email, role} = user
-        return res.json({token, user: {_id, email, Lastname, firstName, role}})
-    });
-};
-
-exports.signout = (req, res) => {
-    res.clearCookie("t");
-    res.json({ message: "Signout success"});
-};
-
+        req.profile = user
+        next();
+    })
+}

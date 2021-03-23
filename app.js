@@ -8,6 +8,7 @@ const expressValidator = require("express-validator");
 require("dotenv").config();
 
 // import routes
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 
 
@@ -26,6 +27,7 @@ app.use(expressValidator());
 app.use(cors());
 
 
+app.use("/eatrich",authRoutes);
 app.use("/eatrich",userRoutes);
 
 const port = process.env.PORT || 8000;
