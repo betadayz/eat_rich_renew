@@ -11,6 +11,8 @@ require("dotenv").config();
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const investmentRoutes = require('./routes/investment'); 
+const planRoutes = require('./routes/plans');
+const interestRoutes = require('./routes/interest');
 
 
 mongoose.connect(process.env.DATABASE, {
@@ -31,6 +33,8 @@ app.use(cors());
 app.use("/auth",authRoutes);
 app.use("/users",userRoutes);
 app.use("/investments",investmentRoutes);
+app.use("/plans",planRoutes);
+app.use("/interests",interestRoutes);
 
 const port = process.env.PORT || 8000;
 

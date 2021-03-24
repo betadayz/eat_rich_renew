@@ -11,4 +11,4 @@ router.post('/create', checkBearerAuth, create);
 
 router.param('userId', userById);
 
-module.exports = router; 
+module.exports = router;

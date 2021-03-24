@@ -7,7 +7,7 @@ exports.create = (req, res) => {
     investment.save((err, data) => {
         if (err) {
             return res.status(400).json({
-                error: errorHandler(err)
+                error: err
             });
         }
         res.json({ data });

@@ -4,10 +4,8 @@ const mongoose = require('mongoose')
 const investmentSchema = new mongoose.Schema({
     
     amount: {
-        type: String,
-        trim: true,
-        required: true,
-        maxlength: 50
+        type: Number,
+        required: true
     },
     startDate: {
         type: Date,
@@ -29,19 +27,20 @@ const investmentSchema = new mongoose.Schema({
         maxlength: 50
     },
     unit: {
-        type: String,
+        type: Number,
         trim: true,
-        required: true,
-        maxlength: 50
+        required: true
     },
     
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true,
     },
-    plan: {
+    interest: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Plan'
+        ref: 'Interest',
+        required: true
     }
 
 },
