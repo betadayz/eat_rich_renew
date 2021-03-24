@@ -92,12 +92,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         maxlength: 50
     },
-    refWallet: {
-        type: String,
-        trim: true,
-        required: true,
-        maxlength: 50
-    },
     refCode: {
         type: String,
         required: true

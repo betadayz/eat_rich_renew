@@ -21,4 +21,4 @@ const planSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("Plan", categorySchema);
+module.exports = mongoose.model("Plan", planSchema);

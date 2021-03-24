@@ -28,9 +28,9 @@ app.use(expressValidator());
 app.use(cors());
 
 
-app.use("/eatrich",authRoutes);
-app.use("/eatrich",userRoutes);
-app.use("/eatrich",investmentRoutes);
+app.use("/auth",authRoutes);
+app.use("/users",userRoutes);
+app.use("/investments",investmentRoutes);
 
 const port = process.env.PORT || 8000;
 

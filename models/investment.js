@@ -2,18 +2,7 @@ const mongoose = require('mongoose')
 
 
 const investmentSchema = new mongoose.Schema({
-    planId: {
-        type: String,
-        trim: true,
-        required: true,
-        maxlength: 50
-    },
-    userId: {
-        type: String,
-        trim: true,
-        required: true,
-        maxlength: 50
-    },
+    
     amount: {
         type: String,
         trim: true,
@@ -24,7 +13,7 @@ const investmentSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    EndDate: {
+    endDate: {
         type: Date,
         required: true
     },
@@ -33,7 +22,7 @@ const investmentSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    rollOverInvestment: {
+    rolloverInvestment: {
         type: String,
         trim: true,
         required: true,
@@ -49,6 +38,10 @@ const investmentSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    plan: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Plan'
     }
 
 },
