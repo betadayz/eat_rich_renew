@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 const investmentSchema = new mongoose.Schema({
     
     amount: {
@@ -31,11 +30,11 @@ const investmentSchema = new mongoose.Schema({
         required: true
     },
     
-    user: {
+    user: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-    },
+    }],
     interest: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Interest',

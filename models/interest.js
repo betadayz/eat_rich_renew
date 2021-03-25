@@ -18,7 +18,7 @@ const interestSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Investment'
     }],
-    plan: [{
+    plans: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Plan'
     }]
