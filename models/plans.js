@@ -31,7 +31,7 @@ const planSchema = new mongoose.Schema({
     interest_rates: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Interest'
-    }],
+    }]
 },
 { timestamps: true }
 );

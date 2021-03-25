@@ -28,7 +28,6 @@ const investmentSchema = new mongoose.Schema({
     },
     unit: {
         type: Number,
-        trim: true,
         required: true
     },
     
