@@ -3,19 +3,15 @@ const router = express.Router();
 const { checkBearerAuth } = require('../helpers/authorization')
 
 
-const { create } = require("../controllers/investment")
+const { create, investmentById, read } = require("../controllers/investment")
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth")
 const { userById } = require("../controllers/user")
-// const { investmentById } = require("../controllers/investment")
 
 router.post('/create', checkBearerAuth, create);
-// router.get("/:investmentId", (req, res) => {
-//     res.json({
-//         user: req.investment.Id
-//     })
-// })
+router.get("/investment/:investmentId", read);
+
 
 router.param('userId', userById);
-// router.param('investmentId', investmentById);
+router.param('investmentId', investmentById);
 
 module.exports = router;

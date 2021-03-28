@@ -18,10 +18,15 @@ exports.create = (req, res) => {
     User.findById(id).exec((err, user) => {
         if(err || !user) {
             return res.status(400).json({
-                error: "User not found"
+                error: "Investment not found"
             })
         }
-        req.profile = user
+        req.investment = investment
         next();
     })
+}
+
+exports.read = (req, res) => {
+    req.investment = undefined
+    return res.json(req.investment)
 }
